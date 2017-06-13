@@ -133,7 +133,7 @@ Vagrant.configure("2") do |config|
          }
 
          function kolla_upgrade_docker() {
-             if [ #{ENV['NEW_DOCKER']} -eq 1 ];then
+             if [ #{ENV['NEW_DOCKER']} -eq 1 ]; then
                  echo "uninstall provided docker to get newest one"
                  sudo -EH apt-get purge docker docker-engine -y
                  curl -sSL https://get.docker.io | bash
@@ -183,7 +183,7 @@ EOF
              popd
          }
 
-         funciton test_instance() {
+         function test_instance() {
              source /etc/kolla/admin-openrc.sh
              openstack server create \
                 --image cirros \
