@@ -77,7 +77,11 @@ Vagrant.configure("2") do |config|
          }
 
          get_pip() {
-             curl -f --proxy $http_proxy --retry 6 \
+             local extra_opts=""
+             if [ -n "$http_proxy" ]; then
+                extra_opts="--proxy $http_proxy"
+             fi
+             curl -f $extra_opts --retry 6 \
                 --retry-delay 5 \
                 -o get-pip.py https://bootstrap.pypa.io/get-pip.py
              sudo -EH python get-pip.py
@@ -144,15 +148,17 @@ Vagrant.configure("2") do |config|
              sudo -EH usermod -aG docker $USER || true
              echo "docker info" && sudo -EH docker info
 
-             sudo -EH touch /etc/systemd/system/docker.service.d/proxy.conf
-             sudo -EH chown vagrant:vagrant /etc/systemd/system/docker.service.d/proxy.conf
-             echo "docker_proxy" && cat > /etc/systemd/system/docker.service.d/proxy.conf << EOF
+             if [ -n "$http_proxy" ]; then
+                 sudo -EH touch /etc/systemd/system/docker.service.d/proxy.conf
+                 sudo -EH chown vagrant:vagrant /etc/systemd/system/docker.service.d/proxy.conf
+                 echo "docker_proxy" && cat > /etc/systemd/system/docker.service.d/proxy.conf << EOF
 [Service]
 Environment="HTTP_PROXY=#{ENV['http_proxy']}"
 Environment="HTTPS_PROXY=#{ENV['http_proxy']}"
 EOF
-             sudo -EH systemctl daemon-reload
-             sudo -EH systemctl restart docker
+                 sudo -EH systemctl daemon-reload
+                 sudo -EH systemctl restart docker
+             fi
          }
 
          function kolla_prechecks() {
