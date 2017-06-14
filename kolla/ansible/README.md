@@ -111,6 +111,6 @@ to scale up/down, one must provide modified inventory file and redeploy.
 
 [kolla_intro_image]: https://image.slidesharecdn.com/containerclustering-pub-160530043919/95/managing-container-clusters-in-openstack-native-way-15-638.jpg?cb=1464583250
 [kolla_image_building]: https://docs.openstack.org/developer/kolla/image-building.html
-[graceful-upgrade](https://blueprints.launchpad.net/kolla/+spec/graceful-upgrade)
-[kolla-upgrading](https://docs.openstack.org/developer/kolla-ansible/operating-kolla.html#upgrading
-[kolla-operating](https://github.com/openstack/kolla-ansible/blob/master/doc/operating-kolla.rst)
+[graceful-upgrade]: https://blueprints.launchpad.net/kolla/+spec/graceful-upgrade
+[kolla-upgrading]: https://docs.openstack.org/developer/kolla-ansible/operating-kolla.html#upgrading
+[kolla-operating]: https://github.com/openstack/kolla-ansible/blob/master/doc/operating-kolla.rst
