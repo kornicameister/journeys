@@ -154,19 +154,15 @@ MONASCA_API_BRANCH=master
 MONASCA_LOG_API_REPO=https://git.openstack.org/openstack/monasca-log-api
 MONASCA_API_REPO=https://git.openstack.org/openstack/monasca-api
 
+# put test branches here
+#
+# put test branches here
+
 # Uncomment one of the following lines and modify accordingly to enable the Monasca DevStack Plugin
 enable_plugin monasca-api $MONASCA_API_REPO $MONASCA_API_BRANCH
 enable_plugin monasca-log-api $MONASCA_LOG_API_REPO $MONASCA_LOG_API_BRANCH
 # enable_plugin monasca-transform https://git.openstack.org/openstack/monasca-transform $MONASCA_TRANSFORM_BRANCH
 ' > local.conf
-
-echo "echo "Setting up test branches"
-
-MONASCA_NOTIFICATION_BRANCH=refs/changes/81/472981/1
-MONASCA_LOG_API_BRANCH=refs/changes/37/472937/1
-MONASCA_API_BRANCH=refs/changes/36/472936/2
-
-" >> local.conf
 
 if [ "$WITH_HEAT" -eq 1 ]; then
     echo '# heat enabled
