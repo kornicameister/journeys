@@ -11,6 +11,15 @@ below:
 
 For installation of **kubernetes** follow [this](kubeadm_install) documention.
 
+### kubeadm
+
+If **k8s** is deployed with **kubeadm**, make sure that following 
+command is executed:
+
+```sh
+export KUBECONFIG=~/.kube/config
+```
+
 ## Setup
 
 ## Environments
